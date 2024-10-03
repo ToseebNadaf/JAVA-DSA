@@ -1,4 +1,4 @@
-package Linked_List;
+package Linked_List.Single_linked_list;
 
 public class Insert_element_at_kth {
     Node head;

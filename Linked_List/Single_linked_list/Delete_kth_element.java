@@ -1,6 +1,6 @@
-package Linked_List;
+package Linked_List.Single_linked_list;
 
-public class Remove_value {
+public class Delete_kth_element {
     Node head;
 
     public void addAtFront(int data){
@@ -9,29 +9,32 @@ public class Remove_value {
         head = newNode;
     }
 
-    public void removeElement(int valueToRemove) {
+    public void delete_kth_element(int k){
         if (head == null) {
-            System.out.println("List is empty, nothing to remove.");
+            System.out.println("List is empty, nothing to delete.");
             return;
         }
 
-        if (head.data == valueToRemove) {
+        if (k == 1) {
             head = head.next;
             return;
         }
 
         Node current = head;
+        int count = 1;
 
-        while (current.next != null && current.next.data != valueToRemove) {
+        while (current != null && count < k - 1) {
             current = current.next;
+            count++;
         }
 
-        if (current.next == null) {
-            System.out.println("Value not found in the list.");
+        if (current == null || current.next == null) {
+            System.out.println("k is out of bounds.");
             return;
         }
 
         current.next = current.next.next;
+
     }
 
     public void printLinkedList() {
@@ -44,7 +47,7 @@ public class Remove_value {
     }
 
     public static void main(String[] args) {
-        Remove_value list = new Remove_value();
+        Delete_kth_element list = new Delete_kth_element();
         list.addAtFront(5);
         list.addAtFront(4);
         list.addAtFront(3);
@@ -54,9 +57,9 @@ public class Remove_value {
         System.out.println("Original linked list:");
         list.printLinkedList();
 
-        int valueToRemove = 2;
-        list.removeElement(valueToRemove);
-        System.out.println("Linked list after removing element " + valueToRemove + ":");
+        int k = 3;
+        list.delete_kth_element(k);
+        System.out.println("Linked list after deleting " + k + "-th element:");
         list.printLinkedList();
     }
 }

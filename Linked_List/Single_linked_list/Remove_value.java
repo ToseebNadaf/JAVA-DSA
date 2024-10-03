@@ -1,6 +1,6 @@
-package Linked_List;
+package Linked_List.Single_linked_list;
 
-public class Delete_kth_element {
+public class Remove_value {
     Node head;
 
     public void addAtFront(int data){
@@ -9,32 +9,29 @@ public class Delete_kth_element {
         head = newNode;
     }
 
-    public void delete_kth_element(int k){
+    public void removeElement(int valueToRemove) {
         if (head == null) {
-            System.out.println("List is empty, nothing to delete.");
+            System.out.println("List is empty, nothing to remove.");
             return;
         }
 
-        if (k == 1) {
+        if (head.data == valueToRemove) {
             head = head.next;
             return;
         }
 
         Node current = head;
-        int count = 1;
 
-        while (current != null && count < k - 1) {
+        while (current.next != null && current.next.data != valueToRemove) {
             current = current.next;
-            count++;
         }
 
-        if (current == null || current.next == null) {
-            System.out.println("k is out of bounds.");
+        if (current.next == null) {
+            System.out.println("Value not found in the list.");
             return;
         }
 
         current.next = current.next.next;
-
     }
 
     public void printLinkedList() {
@@ -47,7 +44,7 @@ public class Delete_kth_element {
     }
 
     public static void main(String[] args) {
-        Delete_kth_element list = new Delete_kth_element();
+        Remove_value list = new Remove_value();
         list.addAtFront(5);
         list.addAtFront(4);
         list.addAtFront(3);
@@ -57,9 +54,9 @@ public class Delete_kth_element {
         System.out.println("Original linked list:");
         list.printLinkedList();
 
-        int k = 3;
-        list.delete_kth_element(k);
-        System.out.println("Linked list after deleting " + k + "-th element:");
+        int valueToRemove = 2;
+        list.removeElement(valueToRemove);
+        System.out.println("Linked list after removing element " + valueToRemove + ":");
         list.printLinkedList();
     }
 }

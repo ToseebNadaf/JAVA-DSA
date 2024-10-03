@@ -1,4 +1,4 @@
-package Linked_List;
+package Linked_List.Single_linked_list;
 
 public class Delete_head_node {
     Node head;
