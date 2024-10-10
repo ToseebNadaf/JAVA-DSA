@@ -29,6 +29,7 @@ public class Reverse_DLL {
     public void insertAtTail(int value) {
         NodeDLL newNode = new NodeDLL(value);
         if (head == null) {
+
             head = tail = newNode;
         } else {
             tail.next = newNode;
